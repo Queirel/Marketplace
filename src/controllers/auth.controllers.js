@@ -1,4 +1,4 @@
-const Users = require("../models/users.models")
+const {Users} = require("../models/index")
 const { passwordHash, passwordCompare } = require("../utils/bcrypt")
 const jwt = require("jsonwebtoken")
 
@@ -13,7 +13,7 @@ const singIn = async (req, res) => {
                 user_id,
                 user_role: user.user_role
             }
-            jwt.sign(payload, process.env.TOKEN_PASSWORD, (error, token) => {
+            jwt.sign(payload, process.env.AUTH_PASSWORD, {expiresIn: process.env.AUTH_EXPIRES}, (error, token) => {
                 if (error) {
                     res.status(404).send(`Error while procesing token ${error}`)
                 }

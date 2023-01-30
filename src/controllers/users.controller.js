@@ -1,5 +1,5 @@
 const { passwordHash } = require("../utils/bcrypt")
-const Users = require("../models/users.models")
+const {Users} = require("../models/index")
 
 const getUsers = async (req, res) => {
     try {

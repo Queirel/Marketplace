@@ -10,13 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      transaction.hasOne(models.user)
     }
   }
   transaction.init({
-    prodId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
-    prod_qty: DataTypes.INTEGER
+    prodId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    prod_qty: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'transaction',

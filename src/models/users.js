@@ -10,16 +10,27 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // users.belongsToMany(models.transaction)
     }
   }
   users.init({
-    name: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.ENUM
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    password:
+    {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    role: {
+      type: DataTypes.ENUM('admin', 'user'),
+      allowNull: false
+    }
+
   }, {
     sequelize,
-    modelName: 'users',
+    modelName: 'user',
   });
   return users;
 };

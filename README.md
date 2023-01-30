@@ -5,7 +5,7 @@ Where products are offered by sellers to be purchased by buyers, that is, a mark
 
 ## Installation
 
-Install my-project with npm
+Install project with npm
 
 ```bash
   npm install
@@ -15,17 +15,25 @@ Install my-project with npm
 
 To run this project, you will need to add the following environment variables to your .env file
 
+# port
 `PORT`
+
+# database
 `DB`
 `DB_USER`
 `DB_PASSWORD`
-`TOKEN_PASSWORD`
+`DB_HOST`
+`DB_DIALECT`
 
+# auth
+`AUTH_EXPIRES`
+`AUTH_ROUNDS`
+`AUTH_PASSWORD`
 
 
 ## Tech Stack
 
-**Server:** Node, Express, Sequelize, Postgres
+**Server:** Node, Express, Sequelize, Postgres, bcryptjs, jsonebtoken
 
 
 ## Authors

@@ -14,14 +14,29 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   products.init({
-    name: DataTypes.STRING,
-    user_id: DataTypes.INTEGER,
-    price: DataTypes.INTEGER,
-    stock: DataTypes.INTEGER,
-    category: DataTypes.ENUM
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    category: {
+      type: DataTypes.ENUM('toys', 'cat'),
+      allowNull: false
+    }
   }, {
     sequelize,
-    modelName: 'products',
+    modelName: 'product',
   });
   return products;
 };

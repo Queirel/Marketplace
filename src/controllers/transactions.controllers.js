@@ -1,4 +1,4 @@
-const Transactions = require("../models/transactions.models")
+const {Transaction} = require("../models/index")
 
 const getTransactions = async (req, res) => {
     try {
