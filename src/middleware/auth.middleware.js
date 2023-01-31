@@ -6,7 +6,7 @@ const middleware = (req, res, next) => {
             const bearerToken = req.headers['authorization']
             if (bearerToken) {
                 token = bearerToken.split(' ')[1]
-                jwt.verify(token, process.env.TOKEN_PASSWORD, (error, data) => {
+                jwt.verify(token, process.env.AUTH_PASSWORD, (error, data) => {
                     if (error) {
                         res.status(403).send('Some error while verifying token')
                     }

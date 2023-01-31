@@ -1,8 +1,9 @@
-const {Products} = require("../models/index");
+const Products = require("../models/products.models");
 
+//Get all products
 const getProducts = async (req, res) => {
     try {
-        const getProds = await Products.findAll({offset: 5, limit: 5 })
+        const getProds = await Products.findAll({ offset: 5, limit: 5 })
         res.status(200).json(getProds)
     }
     catch (error) {
@@ -10,20 +11,22 @@ const getProducts = async (req, res) => {
     }
 }
 
+//Save a product
 const saveProduct = async (req, res) => {
-    
-        const { prod_name, prod_user_id, prod_price, prod_stock, prod_category } = req.body
-        await Products.create({
-            prod_name,
-            prod_user_id,
-            prod_price,
-            prod_stock,
-            prod_category
-        })
-        const getProducts = await Products.findAll()
-        res.status(200).json(getProducts)
+
+    const { prod_name, prod_user_id, prod_price, prod_stock, prod_category } = req.body
+    await Products.create({
+        prod_name,
+        prod_user_id,
+        prod_price,
+        prod_stock,
+        prod_category
+    })
+    const getProducts = await Products.findAll()
+    res.status(200).json(getProducts)
 }
 
+//Get one product
 const getProduct = async (req, res) => {
     try {
         const prod_id = req.params.id
@@ -40,6 +43,7 @@ const getProduct = async (req, res) => {
     }
 }
 
+//Update an own product
 const updateProduct = async (req, res) => {
     try {
         const prod_id = req.params.id
@@ -66,6 +70,7 @@ const updateProduct = async (req, res) => {
     }
 }
 
+// Delete an own product
 const deleteProduct = async (req, res) => {
     try {
         const prod_id = req.params.id
@@ -83,6 +88,7 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+// Get a user's products
 const getProductByUserId = async (req, res) => {
     try {
         const prod_user_id = req.params.id
@@ -99,17 +105,18 @@ const getProductByUserId = async (req, res) => {
     }
 }
 
+//Get a products by the category
 const getProdByCategory = async (req, res) => {
     try {
         const prod_category = req.params.category
         console.log(prod_category)
-                    const product = await Products.findAll({ where: { prod_category } })
-            if (product) {
-                res.status(200).json(product)
-            }
-            else {
-                res.status(404).send('There is no products from that category')
-            }
+        const product = await Products.findAll({ where: { prod_category } })
+        if (product) {
+            res.status(200).json(product)
+        }
+        else {
+            res.status(404).send('There is no products from that category')
+        }
     }
     catch (error) {
         res.status(500).json({ error })

@@ -1,9 +1,9 @@
 const { passwordHash } = require("../utils/bcrypt")
-const {Users} = require("../models/index")
+const Users = require("../models/users.models")
 
 const getUsers = async (req, res) => {
     try {
-        const getUsers = await Users.findAll({ limit: 3,offset: 2 })
+        const getUsers = await Users.findAll({ limit: 3,offset: 0 })
         res.status(200).json(getUsers)
     }
     catch (error) {
@@ -12,7 +12,7 @@ const getUsers = async (req, res) => {
 }
 
 const saveUser = async (req, res) => {
-    try {
+    // try {
         const { user_name, user_password, user_role } = req.body
         const passHash = await passwordHash(user_password)
         const newUser = await Users.create({
@@ -21,10 +21,10 @@ const saveUser = async (req, res) => {
             user_role
         })
         res.status(200).json(newUser)
-    }
-    catch (error) {
-        res.status(500).json({ error })
-    }
+    // }
+    // catch (error) {
+    //     res.status(500).json({ mensaje: message.error })
+    // }
 }
 
 const getUser = async (req, res) => {

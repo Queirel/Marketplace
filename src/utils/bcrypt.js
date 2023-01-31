@@ -3,7 +3,7 @@ require('dotenv').config()
 
 
 const passwordHash = (password) => {
-    return bcryptjs.hash(password, process.env.AUTH_ROUNDS)
+    return bcryptjs.hash(password, Number.parseInt(process.env.AUTH_ROUNDS))
 }
 
 const passwordCompare = (password, passHash) => {

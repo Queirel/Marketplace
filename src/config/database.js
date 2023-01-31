@@ -1,14 +1,14 @@
-
 require('dotenv').config()
 
 module.exports = {
 
   //Database config
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB,
-  host: process.env.DB_HOST,
-  dialect: process.env.DB_DIALECT,
+  username: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'password',
+  database: process.env.DB || 'database_development',
+  host: process.env.DB_HOST || 'localhost',
+  dialect: process.env.DB_DIALECT || 'postgres',
+  
   //Seeds config
   seederStorage: 'sequelize',
   seederStorageTableName: 'seeds',

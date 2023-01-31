@@ -15,17 +15,17 @@ Install project with npm
 
 To run this project, you will need to add the following environment variables to your .env file
 
-# port
+Port:
 `PORT`
 
-# database
+Database:
 `DB`
 `DB_USER`
 `DB_PASSWORD`
 `DB_HOST`
 `DB_DIALECT`
 
-# auth
+Auth:
 `AUTH_EXPIRES`
 `AUTH_ROUNDS`
 `AUTH_PASSWORD`

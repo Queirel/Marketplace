@@ -1,6 +1,6 @@
-const {Users} = require("../models/index")
 const { passwordHash, passwordCompare } = require("../utils/bcrypt")
 const jwt = require("jsonwebtoken")
+const Users = require("../models/users.models")
 
 // login
 const singIn = async (req, res) => {

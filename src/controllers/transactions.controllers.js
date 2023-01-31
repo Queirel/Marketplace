@@ -1,5 +1,6 @@
-const {Transaction} = require("../models/index")
+const Transactions = require("../models/transactions.models")
 
+// Get all transactions
 const getTransactions = async (req, res) => {
     try {
         const getTs = await Transactions.findAll()
@@ -10,6 +11,7 @@ const getTransactions = async (req, res) => {
     }
 }
 
+// Create a transaction
 const saveTransaction = async (req, res) => {
     try {
         const { trans_prod_id, trans_buy_user_id } = req.body
@@ -25,6 +27,7 @@ const saveTransaction = async (req, res) => {
     }
 }
 
+// Get an own transaction
 const getTransaction = async (req, res) => {
     try {
         const trans_id = req.params.id
@@ -41,6 +44,8 @@ const getTransaction = async (req, res) => {
     }
 }
 
+
+// Cancel transaction
 const updateTransaction = async (req, res) => {
     try {
         const trans_id = req.params.id
@@ -64,28 +69,28 @@ const updateTransaction = async (req, res) => {
     }
 }
 
-const deleteTransaction = async (req, res) => {
-    try {
-        const trans_id = req.params.id
-        const transaction = await Users.findOne({ where: { trans_id } })
-        if (transaction) {
-            await Users.destroy({ where: { trans_id } })
-            res.status(200).json(`Transaction ${trans_id} deleted`)
-        }
-        else {
-            res.status(404).send('Transaction does not exists')
-        }
-    }
-    catch (error) {
-        res.status(500).json({ error })
-    }
-}
+// const deleteTransaction = async (req, res) => {
+//     try {
+//         const trans_id = req.params.id
+//         const transaction = await Users.findOne({ where: { trans_id } })
+//         if (transaction) {
+//             await Users.destroy({ where: { trans_id } })
+//             res.status(200).json(`Transaction ${trans_id} deleted`)
+//         }
+//         else {
+//             res.status(404).send('Transaction does not exists')
+//         }
+//     }
+//     catch (error) {
+//         res.status(500).json({ error })
+//     }
+// }
 
 module.exports = {
     getTransaction,
     saveTransaction,
     getTransactions,
     updateTransaction,
-    deleteTransaction
+    // deleteTransaction
 }
 
